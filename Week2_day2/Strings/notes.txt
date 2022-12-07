@@ -1,0 +1,9 @@
+Arrays injs:
+array.push(element)  -- to push element in th =e last
+array.unshift(element)  -- add elements to beginning
+array.shift()
+
+innerhtml will come along with the css style.it will consider the css style instructions also.
+textcontent will ignore the css and only show the text.
+
+...- three dot is psread operator.
