@@ -7,3 +7,5 @@ innerhtml will come along with the css style.it will consider the css style inst
 textcontent will ignore the css and only show the text.
 
 ...- three dot is psread operator.
+
+for getters and setters for classes in js,use _(underscore )- befor variable name.
