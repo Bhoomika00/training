@@ -9,3 +9,37 @@ textcontent will ignore the css and only show the text.
 ...- three dot is psread operator.
 
 for getters and setters for classes in js,use _(underscore )- befor variable name.
+
+splice(starting index,no. of elements we want to remove,add object at that index)
+so if we want to add then--- arr.splice(3,0,emp)
+
+
+Rest paarameters: func(...a)
+
+XHR(xml http request):to send data between server and clients
+let xhr=new xmlhttorequest();
+//sending data
+xhr.open(get,url,<async>)
+xhe.send();
+//dealing with the response
+0:request is not instialize.
+1:request has been set up
+2.request has been send
+3.request is in process.
+4.request is complete.
+
+//tocheck the responseis  sent
+readystate==4 and status==200 ---response is sent you will sure by it and make further process.
+
+observables are the function which throws values.
+observables are like promises or callbacks which handle async requets.
+
+push-Producer will push data,consumer do not know when the data os received.
+pull-consumer will determine when data is requested for,producer does not when data got delievered.
+
+observables will be created on pub-sub basis.
+rxjs-reactive extension of js ----library for observables.
+
+observables are only called unless when users subscribe.
+promises are not cnacellable but observables can be unsubscribe.
+promises cannot emit multiple values obervables throw multiple values.

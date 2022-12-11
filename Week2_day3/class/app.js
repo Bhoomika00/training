@@ -43,3 +43,7 @@ emp2.city='Mumbai';
 
 emp1.disp();
 emp2.disp();
+
+class manager extends employee{
+    
+}
