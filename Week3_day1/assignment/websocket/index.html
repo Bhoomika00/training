@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        Name:<input id="name" type="text" placeholder="Enter name"></input>
+        <button id="btn" onclick="show()">ADD</button>
+    </div>
+    <script>
+        //client 
+        function show() {
+            const ws = new WebSocket('ws://localhost:8002');
+            ws.addEventListener('open',
+                () => {
+                    console.log('we are connected to server');
+                    const data = document.getElementById("name").value;
+                    ws.send(data);
+                });
+        }
+    </script>
+</body>
+
+</html>
+
+<!--
+    for server one:
+    npm init -y
+    npm i ws
+
+-->

@@ -1,0 +1,34 @@
+<!--Create the slected list in which upon selection background color changes -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container"><h1>This is Selectable List</h1></div>
+    <div>
+    <span>Select Langauges:</span>
+    <span><select onchange="changeColor(this);"  id="slist"> 
+        <option id="one" value="Java">Java</option>
+        <option id="two" value="Javascript">JavaScript</option>
+        <option id="three" value="C++">C++</option>
+        <option id="four" value="Python">Python</option>
+    </select></span>
+    </div>
+
+    <!--JS code-->
+    <script>
+    function changeColor(){
+        let list=document.getElementById('slist');
+            list.style.backgroundColor='green';
+    }
+    </script>
+</body>
+</html>
+    
+
+

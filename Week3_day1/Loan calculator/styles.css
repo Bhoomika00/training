@@ -1,0 +1,34 @@
+body {
+    background-color:white;
+    font-family:'Times Roman';
+   text-align: center;
+}
+  
+
+  
+.calculator {
+    width: 400px;
+    height:500px;
+    background-color: black;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+   
+    transform: translateX(-50%) translateY(-50%);
+    padding: 20px 0px 0px 100px;
+    border-radius: 50px;
+    color: white;
+    
+    
+}
+
+p{
+    text-align: left;
+}
+  
+input {
+    padding: 7px;
+    width: 70%;
+    margin-top: 7px;
+    text-align:center;
+}

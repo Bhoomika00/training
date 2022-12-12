@@ -1,0 +1,30 @@
+<!--create a button which on clicking along with alt and shift key displays hello world-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id='btn' onclick="show()">
+        Click this along with alt & shift</button>
+    <h1 id="result"></h1>
+
+
+
+    <!--JS code-->
+    <script>
+        function show(){
+            let btn=document.getElementById('btn');
+            btn.addEventListener("click",function(event){
+                event.preventDefault();
+                if(event.altKey && event.shiftKey)
+                    document.getElementById('result').innerHTML="Hello World";
+            });
+
+        }
+    </script>
+</body>
+</html>
