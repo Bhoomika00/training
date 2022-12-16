@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .thumb {
+            width: 10px;
+            height: 25px;
+            border-radius: 3px;
+            position: relative;
+            left: 10px;
+            top: -5px;
+            background: blue;
+            cursor: pointer;
+        }
+
+        .slider {
+            border-radius: 5px;
+            background: #E0E0E0;
+            background: linear-gradient(left top, #E0E0E0, #EEEEEE);
+            width: 310px;
+            height: 15px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="slider" class="slider">
+        <div class="thumb"></div>
+    </div>
+    <script>
+        let thumb = slider.querySelector('.thumb');
+        thumb.onmousedown = function (event) {
+            //          
+            // shiftY not needed, the thumb moves only horizontally 
+            console.log('mouse down');
+            document.addEventListener('mousemove', onMouseMove);
+            document.addEventListener('mouseup', onMouseUp);
+
+            function moveAt(pageX) {
+                thumb.style.left = pageX - thumb.offsetWidth / 0.5 + 'px';
+                console.log(pageX);
+            }
+            //moveAt(event.pageX);
+            function onMouseMove(event) {
+                //  
+                moveAt(event.pageX);
+
+            }
+
+            function onMouseUp() {
+                // 
+                console.log('mouse UP');
+                document.removeEventListener("mousemove", onMouseMove);
+                thumb.onMouseUp = "";
+            }
+
+        };
+            
+    </script>
+</body>
+
+</html>
