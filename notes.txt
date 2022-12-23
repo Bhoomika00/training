@@ -1,0 +1,38 @@
+Angular modeule is different from js modules.
+    js files we create in node project are jsavscript modules.
+    But in Angular, modules are container on the page.
+    every angular app has at least one module which is named as aPP module or root module when we create angular app.
+
+MVc in angular
+    Model: includes entity/class(ts file)
+    view :template (html file)
+    contoller: includes components(component=ts class+html template+metadata)
+
+decorators: are js functions and take object and will tell the angular how to treat the class(annotations) 
+
+@Component({
+
+    selector:'',    //element to be refered by which name to put in main html or index.html
+    templateUrl:' ',    //url of html file. 
+    stylesUrls:['']      //there can be multiple styles url
+})
+
+@Component({
+    selector:'',
+    template:'<h1>Hello world</h1>'
+})
+
+String interpolation :{{ }}
+
+components are also called as  the directives of view or template.
+
+structural directive:
+ *ngFor   --same like for of 
+*ng if ---coditional
+
+property binding: 	done of tag attribute
+in ts file declare variable for eg:title: page
+in html <img [src]:'title'/>
+
+
+@input decorator: to get the value of parent component through property binding.
