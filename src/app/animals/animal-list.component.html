@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Animal list</h1>
+    <input type="text"  (keypress)='filterData(numage)' [(ngModel)]="numage"/>
+
+  <h1>Filtered as per age {{numage}}</h1>
+
+    <div class="table-responsive">
+        <table class="table table-light table-striped table-responsive"
+        *ngIf="animalList.length">
+
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Brief Desc</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">
+                        <button
+                class="btn btn-primary"
+                (click)="imageVisibility()">{{showImg ? 'Hide' : 'Show'}} Image</button>
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let animal of filterList;let i = index">
+                    <td>{{i+1}}</td>
+                    <td>
+                        {{animal.id}}
+                    </td>
+                    <td>{{animal.name}}</td>
+
+                    <td>{{animal.breifdesc}}</td>
+                    <td>{{animal.age}}</td>
+                    <td><img  *ngIf="showImg"
+                         src={{animal.imageUrl}} [style.margin.px]='imageMargin' 
+                        [style.width.px]='imageWidth'/></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+
+    </div>
+
+</body>
+
+</html>
