@@ -36,3 +36,10 @@ in html <img [src]:'title'/>
 
 
 @input decorator: to get the value of parent component through property binding.
+
+Services:
+cross cutting feature.
+features that are constantly needed are put in services.
+
+httpclientmodule: is a lazy module
+return observables.
