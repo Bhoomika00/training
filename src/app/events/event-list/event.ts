@@ -2,7 +2,7 @@
 export interface Ievent{
     id:number;
     name:string;
-    date:Date;
+    date:string;
     time:string;
     price:number;
     imageUrl:string;
@@ -11,7 +11,7 @@ export interface Ievent{
         city:string,
         country:string
     },
-    sessions:[Isession];
+    sessions:Isession[];
     
     
 

@@ -9,12 +9,12 @@ import { Ievent } from 'src/app/events/event-list/event';
 })
 export class EventService {
 
-  
+  private url='api/events/'
   constructor(private http:HttpClient) { }
 
   getevents():Observable<Ievent[]>{
 
-    return this.http.get<Ievent[]>('api/events.json');
+    return this.http.get<Ievent[]>(this.url);
 
 
   }
