@@ -6,5 +6,5 @@ export interface Iproduct{
     price:number;
     rating:number;
     imageurl:string;
-
+    qty:number;
 }

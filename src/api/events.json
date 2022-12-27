@@ -1,0 +1,71 @@
+[{
+    "id":101,
+    "name":"Angular",
+    "date":"2022/12/20",
+    "time":"10:00 AM",
+    "price":1500,
+    "imageUrl":"../../assets/images/angular.jpg",
+    "location":{
+        "address":"Grand Heritiage Hotel",
+        "city":"Pune",
+        "country":"India"
+    },
+    "sessions":[{
+        "id":10120,
+        "name":"Basics of Angular",
+        "presenter":"Mr.Sharma",
+        "duration":120 ,
+        "voters":["Amit Kumar","Arya"]
+    }]
+
+},
+{
+
+    "id":102,
+    "name":"Cyber security",
+    "date":"2022/12/21",
+    "time":"10:00 AM",
+    "price":1500,
+    "imageUrl":"../../assets/images/cs.jpg",
+    "location":{
+        "address":"IOIT COLLEGE Audotorium",
+        "city":"Pune",
+        "country":"India"
+    },
+    "sessions":[{
+        "id":101299,
+        "name":"Concepts Of cyber security",
+        "presenter":"Mrs.Kumar",
+        "duration":60 ,
+        "voters":["Shruti Choure","Arya","Tejal Patil"]
+    },
+    {
+        "id":101299,
+        "name":"Cyber security hands-on",
+        "presenter":"Mrs.Kumar",
+        "duration":120 ,
+        "voters":["Shruti Choure","Arya","Tejal Patil"]
+
+    }]
+
+},
+{
+    "id":103,
+    "name":"Corporate security",
+    "date":"2022/12/22",
+    "time":"10:00 AM",
+    "price":1500,
+    "imageUrl":"../../assets/images/coporate.jpg",
+    "location":{
+        "address":"Town hall Cognizant",
+        "city":"Pune",
+        "country":"India"
+    },
+    "sessions":[{
+        "id":10127,
+        "name":"Essential steps of Corporate Security",
+        "presenter":"Mr.Sharma",
+        "duration":120 ,
+        "voters":["Amit Kumar","Arya"]
+    }]
+}]

@@ -1,4 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { ProductService } from 'shared/product-service.service';
 import { Iproduct } from './product';
 
 @Component({
@@ -6,17 +8,37 @@ import { Iproduct } from './product';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent implements OnInit{
-
-  ngOnInit():void{
-    this.filterList=this.products
-  }
+export class ProductListComponent implements OnInit,OnDestroy{
+  
+  constructor(private productService:ProductService){}
   _cat='0';
   imageMargin:number=5;
   imageWidth:number=100;
   showImg:boolean=false;
   filterList:Iproduct[]=[];
+  products:Iproduct[]=[];
   title:string='';
+  errorMessage:string='';
+  sub!:Subscription;
+  
+  
+  ngOnInit():void{
+    this.sub=this.productService.getproducts().subscribe((response)=>{
+      console.log(response);
+      this.products=response;
+      this.filterList=this.products;
+    },
+    err=>{this.errorMessage=err;
+      console.log(err);
+    }
+    );
+  }
+    
+    ngOnDestroy(): void {
+      this.sub.unsubscribe();
+    }
+  
+
 
 
 
@@ -33,42 +55,7 @@ set cat(val:string){
  console.log('in setter',this.filterList);
  
 }
-products:Iproduct[]=[{
-  id:101,
-    name:'Shirts',
-    
-    category:'Clothing',
-    price:500,
-    rating:3.5,
-    imageurl:'../../assets/images/shirt.jpg'
-},
-{id:102,
-  name:'Pizza',
-  
-  category:'Food',
-  price:300,
-  rating:5,
-  imageurl:'../../assets/images/pizza.jpg'
-},
-{
-  id:501,
-    name:"Laptop",
-    
-    category:'Electronics',
-    price:50000,
-    rating:4,
-    imageurl:'../../assets/images/laptop.jpg',
-},
-{
-  id:504,
-    name:'Mobile',
-    
-    category:'Electronics',
-    price:10000,
-    rating:4.5,
-    imageurl:'../../assets/images/mobile.jpg'
-}
-]
+//products:Iproduct[]=this.productService.getproducts()
 
 imageVisibility():void{
   this.showImg=!this.showImg
@@ -88,6 +75,7 @@ ratingHandler(msg:string):void{
 
 productAddEvent(p:Iproduct){
    this.addEvent.emit(p);
+   
 }
 
 }

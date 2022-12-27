@@ -11,6 +11,10 @@ import { ProductListComponent } from './products/product-list.component';
 import { StarComponent } from './star/star.component';
 import { CartComponent } from './cart/cart.component';
 import { RepeatDataPipe } from './repeat-data.pipe';
+import { HttpClientModule } from '@angular/common/http';
+import { NavbarComponent } from './navbar/navbar.component';
+import { EventListComponent } from './events/event-list/event-list.component';
+import { EventDetailComponent } from './events/event-detail/event-detail.component';
 
 @NgModule({
   declarations: [
@@ -21,10 +25,13 @@ import { RepeatDataPipe } from './repeat-data.pipe';
     ProductListComponent,
     StarComponent,
     CartComponent,
-    RepeatDataPipe
+    RepeatDataPipe,
+    NavbarComponent,
+    EventListComponent,
+    EventDetailComponent
   ],
   imports: [
-    BrowserModule, FormsModule
+    BrowserModule, FormsModule,   HttpClientModule
     //AppRoutingModule
   ],
   providers: [],
