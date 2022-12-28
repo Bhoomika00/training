@@ -20,6 +20,8 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { AppRoutingModule } from './app-routing.module';
 import { ProductaddComponent } from './products/productadd/productadd.component';
 import { StarIconDirective } from './star-icon.directive';
+import { AComponent } from './practice/a.component';
+import { BComponent } from './practice/b.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { StarIconDirective } from './star-icon.directive';
     EventListComponent,
     EventDetailComponent,
     ProductaddComponent,
-    StarIconDirective
+    StarIconDirective,
+    AComponent,
+    BComponent
   ],
   imports: [
     BrowserModule, FormsModule,   HttpClientModule, ReactiveFormsModule,

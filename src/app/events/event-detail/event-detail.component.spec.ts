@@ -24,8 +24,11 @@ describe('EventDetailComponent', () => {
   });
   it('should check the msg recieved',()=>{
     let msgparent='hello from parent';
+    component.msg=msgparent;
+
+    fixture.detectChanges();
     let msgEle=fixture.nativeElement.querySelector('#msg').textContent;
 
-    expect(msgEle).toEqual(msgparent);
+    expect(msgEle).toContain(msgparent);
   });
 });
