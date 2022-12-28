@@ -46,7 +46,8 @@
 
                     <td>{{p.category}}</td>
                     <td>{{p.price|currency:'INR'}}</td>
-                    <td><app-star [rating]='p.rating' 
+                    <!-- this msg is for only testing -->
+                    <td><app-star [rating]='p.rating'  [msg]='title' 
                         (ratingClicked)='ratingHandler($event)'>
                     </app-star></td>
                     <td><input type="number" style="width: 50px;" [(ngModel)]="p.qty"></td>

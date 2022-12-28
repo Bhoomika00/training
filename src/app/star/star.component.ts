@@ -7,6 +7,7 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 })
 export class StarComponent implements OnInit,OnChanges {
   @Input() rating:number=0;
+  @Input() msg:string=''; //this msg is for testing purpose
   cropWidth:number=75;
 
   
@@ -21,8 +22,10 @@ export class StarComponent implements OnInit,OnChanges {
   @Output() ratingClicked:EventEmitter<string>=new EventEmitter<string>();
 
   starclicked():void{
-    console.log('in the star');
-    this.ratingClicked.emit(`Product has rating of ${this.rating}`);
+    let msg =  document.querySelector('#h1')?.textContent ?? 'hello';
+    this.ratingClicked.emit(msg);
+    /*console.log('in the star');
+    this.ratingClicked.emit(`Product has rating of ${this.rating}`);*/
   }
 
 }

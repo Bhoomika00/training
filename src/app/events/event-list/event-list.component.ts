@@ -12,6 +12,7 @@ export class EventListComponent implements OnInit {
  events:Ievent[]=[];
 sub!:Subscription;
 errorMsg:string="";
+msg:string='hello from parent';
 
 constructor(private service:EventService){}
 

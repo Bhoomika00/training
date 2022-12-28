@@ -19,7 +19,7 @@ export class ProductListComponent implements OnInit,OnDestroy{
   showImg:boolean=false;
   filterList:Iproduct[]=[];
   products:Iproduct[]=[];
-  title:string='';
+  title:string='hello from parent'; //this title is only for testing 
   errorMessage:string='';
   sub!:Subscription;
   

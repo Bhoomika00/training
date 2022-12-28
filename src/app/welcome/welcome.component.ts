@@ -11,14 +11,16 @@ export class WelcomeComponent {
   name:string='Bhoomika';
   num:number=0;
 
-  constructor(private loggingService:LoggingService,private productService:ProductService){}
-
-  msg:string=this.loggingService.getmsg();
   
-
+  //msg:string=this.loggingService.getmsg();
+  welcomeMsg:string='Welcome to Angular app';
+  
+  /*
+  constructor(private loggingService:LoggingService,private productService:ProductService){}
   printProduct(){
     this.productService.getproducts().forEach(data=>{
       this.loggingService.displayProduct(JSON.stringify(data));
     })
   }
+  */
 }

@@ -9,6 +9,7 @@ import { Ievent, Isession } from '../event-list/event';
 })
 export class EventDetailComponent implements OnInit,OnChanges {
   @Input() events:Ievent[]=[];
+  @Input() msg:string='';
   sessions:Isession[]=[];
   
 

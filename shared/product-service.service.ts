@@ -7,7 +7,7 @@ import { Iproduct } from 'src/app/products/product';
   providedIn: 'root'
 })
 export class ProductService {
-  private url='api/products'
+  private url='/api/products'
   products:Iproduct[]=[];
 
   private selectedProductSource= new BehaviorSubject<Iproduct | null >(null);
