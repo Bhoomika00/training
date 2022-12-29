@@ -1,0 +1,97 @@
+<form [formGroup]="bookForm" (ngSubmit)="onSubmit()" class="bg-dark">
+    <div class="form-group">
+        <h1>{{formtitle}}</h1>
+        <p>
+            <label for="id">Id</label>
+            <input class="form-control" type="text" name="id" id="id" formControlName="id">
+
+        </p>
+        <div *ngIf="id" >
+            <div *ngIf="!id.valid && (id.dirty || id.touched)">
+
+                <div [hidden]="!id.errors?.['required']" class="alert alert-danger">
+                    Id is required
+                </div>
+
+            </div>
+        </div>
+        <p>
+            <label for="title">Book title</label>
+            <input class="form-control" type="text" name="title" id="title" formControlName="title">
+
+        </p>
+        <div *ngIf="title">
+            <div *ngIf="!title.valid && (title.dirty || title.touched)">
+
+                <div [hidden]="!title.errors?.['required']" class="alert alert-danger">
+                    Title is required
+                </div>
+                <div [hidden]="!title.errors?.['minlength']" class="alert alert-danger">
+                    Title should be at least 4 charcters long.
+                </div>
+
+            </div>
+        </div>
+
+        <div formGroupName="author">
+            <p>
+                <label for="name">Author Name</label>
+                <input class="form-control" type="text" name="name" id="name" formControlName="name">
+
+            </p>
+            <div *ngIf="name">
+                <div *ngIf="!name.valid && (name.dirty || name.touched)">
+
+                    <div [hidden]="!name.errors?.['required']" class="alert alert-danger">
+                        Name is required
+                    </div>
+                    <div [hidden]="!name.errors?.['minlength']" class="alert alert-danger">
+                        Name should be at least 4 charcters long.
+                    </div>
+
+                </div>
+            </div>
+
+            <p>
+                <label for="email">Author Email</label>
+                <input class="form-control" type="text" name="email" id="email" formControlName="email">
+
+            </p>
+            <div *ngIf="email">
+                <div *ngIf="!email.valid && (email.dirty || email.touched)">
+
+                    <div [hidden]="!email.errors?.['required']" class="alert alert-danger">
+                        Email is required
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <p>
+            <label for="dateOfPublishing">Date of Publishing</label>
+            <input class="form-control" type="date" name="dateOfPublishing" id="dateOfPublishing"
+                formControlName="dateOfPublishing">
+
+        </p>
+        <div *ngIf="dateOfPublishing">
+            <div *ngIf="!dateOfPublishing.valid && (dateOfPublishing.dirty || dateOfPublishing.touched)">
+
+                <div [hidden]="!dateOfPublishing.errors?.['required']" class="alert alert-danger">
+                    Date of Publishing is required
+                </div>
+
+            </div>
+        </div>
+        <br>
+        <br>
+
+
+
+
+        <button type="submit" [disabled]="!bookForm.valid" class=" btn btn-success rounded-pill">Submit</button>
+        <br>
+    </div>
+    <!--form group one-->
