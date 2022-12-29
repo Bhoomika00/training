@@ -31,4 +31,37 @@ describe('EventDetailComponent', () => {
 
     expect(msgEle).toContain(msgparent);
   });
+
+  it('should check the @input json data',()=>{
+    component.events=
+    [{
+      "id":101,
+      "name":"Angular",
+      "date":"2022/12/20",
+      "time":"10:00 AM",
+      "price":1500,
+      "imageUrl":"../../assets/images/angular.jpg",
+      "location":{
+          "address":"Grand Heritiage Hotel",
+          "city":"Pune",
+          "country":"India"
+      },
+      "sessions":[{
+          "id":10120,
+          "name":"Basics of Angular",
+          "presenter":"Mr.Sharma",
+          "duration":120 ,
+          "voters":["Amit Kumar","Arya"]
+      }]
+  
+  
+  }];
+let event1=component.events;
+fixture.detectChanges();
+
+let ele=fixture.nativeElement.querySelector('#event').textContent;
+
+expect(JSON.parse(ele)).toEqual(JSON.parse(JSON.stringify(event1)));
+
+  });
 });

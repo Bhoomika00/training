@@ -20,8 +20,10 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { AppRoutingModule } from './app-routing.module';
 import { ProductaddComponent } from './products/productadd/productadd.component';
 import { StarIconDirective } from './star-icon.directive';
-import { AComponent } from './practice/a.component';
-import { BComponent } from './practice/b.component';
+
+import { EmpformComponent } from './forms/empform.component';
+import { TrusteeComponent } from './forms/trustee/trustee.component';
+import { BookComponent } from './forms/books/book.component';
 
 @NgModule({
   declarations: [
@@ -38,8 +40,10 @@ import { BComponent } from './practice/b.component';
     EventDetailComponent,
     ProductaddComponent,
     StarIconDirective,
-    AComponent,
-    BComponent
+    
+    EmpformComponent,
+    TrusteeComponent,
+    BookComponent
   ],
   imports: [
     BrowserModule, FormsModule,   HttpClientModule, ReactiveFormsModule,

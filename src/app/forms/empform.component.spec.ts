@@ -1,20 +1,18 @@
-import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AComponent } from './a.component';
+import { EmpformComponent } from './empform.component';
 
-describe('AComponent', () => {
-  let component: AComponent;
-  let fixture: ComponentFixture<AComponent>;
+describe('EmpformComponent', () => {
+  let component: EmpformComponent;
+  let fixture: ComponentFixture<EmpformComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AComponent ],
-      schemas:[NO_ERRORS_SCHEMA]
+      declarations: [ EmpformComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AComponent);
+    fixture = TestBed.createComponent(EmpformComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
