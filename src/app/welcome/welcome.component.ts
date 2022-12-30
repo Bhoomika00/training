@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { LoggingService } from 'shared/logging.service';
-import { ProductService } from 'shared/product-service.service';
+//import { LoggingService } from 'shared/logging.service';
+//import { ProductService } from 'shared/product-service.service';
 
 @Component({
   selector: 'welcome',

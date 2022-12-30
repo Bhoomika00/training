@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Iproduct } from './products/product';
+//import { Iproduct } from './products/product';
 
 @Component({
   selector: 'app',
@@ -7,7 +7,7 @@ import { Iproduct } from './products/product';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'demoapp';
+ /*  title = 'demoapp';
   products:Iproduct[]=[];
   quantity:number=0;
 
@@ -16,6 +16,6 @@ export class AppComponent {
     if(this.products.includes(p)){
        this.quantity++; //this quantity indicates that size of cart.
     }
-  }
+  } */
 }
 

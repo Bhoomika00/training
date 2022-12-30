@@ -85,6 +85,31 @@
 
             </div>
         </div>
+        <p>Publishers:</p>
+        <div formArrayName='publishers'>
+            <div *ngFor='let p of publishers().controls;let pubi=index'>
+                <div [formGroupName]='pubi'>
+                    Publisher {{pubi}} <br>
+                    <p>
+                        <label for="pname">Publisher Name</label>
+                        <input class="form-control" type="text" name="pname" id="pname" formControlName="pName">
+            
+                    </p>
+                    <p>
+                        <label for="pemail">Publisher Email</label>
+                        <input class="form-control" type="text" name="pemail" id="pemail" formControlName="pEmail">
+            
+                    </p>
+                    <br>
+                   
+                    <button type="button" (click)="removePublisher(pubi)" class="btn btn-alert">Remove Publisher</button><br><br>
+                   
+
+
+                </div>
+            </div>
+        </div>
+        <button type="button" (click)="addPublisher()" class="btn btn-success">Add Publisher</button><br>
         <br>
         <br>
 
@@ -94,4 +119,5 @@
         <button type="submit" [disabled]="!bookForm.valid" class=" btn btn-success rounded-pill">Submit</button>
         <br>
     </div>
+</form>
     <!--form group one-->
