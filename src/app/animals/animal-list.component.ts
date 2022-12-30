@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Ianimal } from './animal';
+import { AnimalService, Ianimal } from './animal';
 
 @Component({
   selector: 'app-animal-list',
@@ -7,15 +7,19 @@ import { Ianimal } from './animal';
   styleUrls: ['./animal-list.component.css']
 })
 export class AnimalListComponent implements OnInit {
-
+  animalList:Ianimal[]=[];  
+  constructor(private service:AnimalService){}
     ngOnInit():void{
-      this.filterList=this.animalList
+      //this.filterList=this.animalList
+      this.animalList=this.service.getAnimals();
+
     }
-    _numage=0;
+    /* _numage=0;
     imageMargin:number=5;
     imageWidth:number=100;
     showImg:boolean=false;
     filterList:Ianimal[]=[];
+    
 
 
     get numage():number{
@@ -32,36 +36,7 @@ export class AnimalListComponent implements OnInit {
    
  }
 
-    animalList:Ianimal[]=[
-      
-      {
-    id:101,
-    name:'Peacock',
-    breifdesc:'This is the peacock',
-    age:8,
     
-    imageUrl:'../../assets/images/p.jpg'
-
-    },
-    {
-      id:102,
-      name:'Crocodile',
-      breifdesc:'This is crocodile',
-      age:9,
-      
-      imageUrl:'../../assets/images/crocodile.jpg'
-  
-      },
-      {
-        id:103,
-        name:'Turtle',
-        breifdesc:'This is the turtle',
-        age:2,
-        imageUrl:'../../assets/images/t.jpg'
-    
-        },
-      ]
-
       imageVisibility():void{
         this.showImg=!this.showImg
       }
@@ -73,5 +48,5 @@ export class AnimalListComponent implements OnInit {
       
       }
 
-    
+ */    
 }

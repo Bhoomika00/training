@@ -10,9 +10,9 @@
 
 <body>
     <h1>Animal list</h1>
-    <input type="text"  (keypress)='filterData(numage)' [(ngModel)]="numage"/>
+    <!-- <input type="text"  (keypress)='filterData(numage)' [(ngModel)]="numage"/>
 
-  <h1>Filtered as per age {{numage}}</h1>
+  <h1>Filtered as per age {{numage}}</h1> -->
 
     <div class="table-responsive">
         <table class="table table-light table-striped table-responsive"
@@ -23,29 +23,30 @@
                     <th scope="col">#</th>
                     <th scope="col">ID</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Brief Desc</th>
+                </tr>
+            </thead>
+                    <!-- <th scope="col">Brief Desc</th>
                     <th scope="col">Age</th>
                     <th scope="col">
                         <button
                 class="btn btn-primary"
                 (click)="imageVisibility()">{{showImg ? 'Hide' : 'Show'}} Image</button>
                     </th>
-
-                </tr>
-            </thead>
+ -->
+                
             <tbody>
-                <tr *ngFor="let animal of filterList;let i = index">
+                <tr *ngFor="let ani of animalList;let i = index">
                     <td>{{i+1}}</td>
                     <td>
-                        {{animal.id}}
+                        {{ani.id}}
                     </td>
-                    <td>{{animal.name}}</td>
+                    <td><a [routerLink]="['/animal',ani.id]">{{ani.name}}</a></td>
 
-                    <td>{{animal.breifdesc}}</td>
+                    <!-- <td>{{animal.breifdesc}}</td>
                     <td>{{animal.age}}</td>
                     <td><img  *ngIf="showImg"
                          src={{animal.imageUrl}} [style.margin.px]='imageMargin' 
-                        [style.width.px]='imageWidth'/></td>
+                        [style.width.px]='imageWidth'/></td> -->
                 </tr>
             </tbody>
         </table>
