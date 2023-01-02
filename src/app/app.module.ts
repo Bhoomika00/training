@@ -26,7 +26,7 @@ import { EmpformComponent } from './forms/empform.component';
 import { BookComponent } from './forms/books/book.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
-import { AnimalDetailComponent } from './animals/animal-detail.component';
+//import { AnimalDetailComponent } from './animals/animal-detail.component';
 import { ProductListComponent } from './products/product-list.component';
 import { ProductaddComponent } from './products/productadd/productadd.component';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -57,7 +57,7 @@ import { ShellComponent } from './home/shell.component';
     BookComponent,
     HomeComponent,
     AboutComponent,
-    AnimalDetailComponent,
+    //AnimalDetailComponent,
     MenuComponent,
     LoginComponent,
     ShellComponent

@@ -23,30 +23,34 @@
                     <th scope="col">#</th>
                     <th scope="col">ID</th>
                     <th scope="col">Name</th>
-                </tr>
-            </thead>
-                    <!-- <th scope="col">Brief Desc</th>
+               
+           
+                     <th scope="col">Brief Desc</th>
                     <th scope="col">Age</th>
                     <th scope="col">
                         <button
                 class="btn btn-primary"
                 (click)="imageVisibility()">{{showImg ? 'Hide' : 'Show'}} Image</button>
                     </th>
- -->
+                </tr>
+                     </thead>
+ 
                 
             <tbody>
-                <tr *ngFor="let ani of animalList;let i = index">
+                <tr *ngFor="let animal of filterList;let i = index">
                     <td>{{i+1}}</td>
                     <td>
-                        {{ani.id}}
+                        {{animal.id}}
                     </td>
-                    <td><a [routerLink]="['/animal',ani.id]">{{ani.name}}</a></td>
+                    <!--<td><a [routerLink]="['/animal',ani.id]">{{ani.name}}</a></td>-->
+                    <td>{{animal.name}}</td>
 
-                    <!-- <td>{{animal.breifdesc}}</td>
+                    <td>{{animal.breifdesc}}</td>
                     <td>{{animal.age}}</td>
                     <td><img  *ngIf="showImg"
                          src={{animal.imageUrl}} [style.margin.px]='imageMargin' 
-                        [style.width.px]='imageWidth'/></td> -->
+                        [style.width.px]='imageWidth'/></td>
+                        <td><i class="fa fa-trash" aria-hidden="true"></i></td>
                 </tr>
             </tbody>
         </table>
@@ -54,6 +58,12 @@
 
 
 
+    </div>
+
+    <div>
+        <button id='add' value='Add Entry' class="btn btn-primary">
+            Add Entry
+            </button>
     </div>
 
 </body>

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from "angular-in-memory-web-api";
+import { Ianimal } from 'src/app/animals/animal';
 import { Ievent } from 'src/app/events/event-list/event';
 import { Iproduct } from 'src/app/products/product';
 
@@ -126,10 +127,40 @@ export class InmemoryeventService implements InMemoryDbService{
       }
   ]
 
+  const animals:Ianimal[]=[
+
+    {
+            "id": 101,
+            "name": "Peacock",
+            "breifdesc": "This is the peacock",
+            "age": 8,
+
+            "imageUrl": "../../assets/images/p.jpg"
+
+    },
+    {
+            "id": 102,
+            "name": "Crocodile",
+            "breifdesc": "This is crocodile",
+            "age": 9,
+
+            "imageUrl": "../../assets/images/crocodile.jpg"
+
+    },
+    {
+            "id": 103,
+            "name": "Turtle",
+            "breifdesc": "This is the turtle",
+            "age": 2,
+            "imageUrl": "../../assets/images/t.jpg"
+
+    }
+]
+
     
 
 
-    return {events,products}
+    return {events,products,animals}
     
   }
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AnimalService, Ianimal } from './animal';
 
 @Component({
@@ -8,17 +10,41 @@ import { AnimalService, Ianimal } from './animal';
 })
 export class AnimalListComponent implements OnInit {
   animalList:Ianimal[]=[];  
-  constructor(private service:AnimalService){}
-    ngOnInit():void{
-      //this.filterList=this.animalList
-      this.animalList=this.service.getAnimals();
-
-    }
-    /* _numage=0;
+  constructor(private service:AnimalService,private router:Router){}
+    
+  selectedAnimal!:Ianimal | null;
+  href:string='';
+     _numage=0;
     imageMargin:number=5;
     imageWidth:number=100;
     showImg:boolean=false;
     filterList:Ianimal[]=[];
+    sub!:Subscription;
+    errorMessage:string=''
+
+    ngOnInit():void{
+      //this.filterList=this.animalList
+      this.href=this.router.url;
+    console.log(this.href);
+      this.sub=this.service.getAnimals().subscribe(
+        (response)=>{
+          console.log('in ngonint')
+          console.log(response);
+          this.animalList=response;
+          this.filterList=this.animalList;
+        },
+        err=>{this.errorMessage=err;
+          console.log(err);
+         }
+
+      );
+
+      this.service.selectedAnimalChanges$.
+      subscribe(currentAnimal=>{this.selectedAnimal=currentAnimal;
+      console.log(this.selectedAnimal);
+      });
+
+    }
     
 
 
@@ -48,5 +74,25 @@ export class AnimalListComponent implements OnInit {
       
       }
 
- */    
+      addanimal(){
+        console.log('in new animal entry');
+      
+        this.service.changeSelectedAnimal(this.service.newAnimal());
+        console.log('back to newAnimal from service ');
+      
+         this.router.navigate([this.href,'addAnimal']);
+          //console.log(this.productService.newProduct());
+      }
+      
+      animalSelected(animal:Ianimal):void{
+        this.service.changeSelectedAnimal(animal);
+        
+       }
+        /*getProductById(id:number):Ianimal{
+          this.service.getAnimalById(id).subscribe(resp=>this.prod=resp);
+          return this.prod;
+        }*/
+      
+
+  
 }
