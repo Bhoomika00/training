@@ -1,0 +1,19 @@
+form{
+    margin-left: 300px;
+    border:2px solid black;
+    text-align: left;
+    background-color: aqua;
+    margin-right: 300px;
+}
+
+
+label{
+    margin-left:5px;
+}
+h1{
+    text-align: center;
+}
+
+button{
+    display: block;
+}

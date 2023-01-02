@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="row row-cols-1 row-cols-md-3 g-4" >
+        <div class="col h-100" *ngFor="let e of events">
+          <div class="card" (click)='showEvent(e)' >
+            <img src="{{e.imageUrl}}" class="card-img-top" alt="..." >
+            <div class="card-body">
+              <h5 class="card-title">{{e.name}}</h5>
+              <p class="card-text">Date & time:{{e.date}},{{e.time}}</p>
+              <p class="card-text">Location:
+                {{e.location.address}},{{e.location.city}},{{e.location.country}}</p>
+                <p id='price'>{{e.price | currency:'INR'}}</p>
+                
+                  
+                <div class="table-responsive">
+                  <table class="table"  *ngFor="let s of e.sessions;">
+                    <thead>
+                      
+                      <th>Session name</th>
+                      <th>Speaker</th>
+                      <th>Duaration</th>
+                    </thead>
+                    <tbody>
+                      
+                      <td>{{s.name}}</td>
+                      <td>{{s.presenter}}</td>
+                      <td>{{s.duration}}</td>
+                      
+                    </tbody>
+                  </table>
+                  
+                </div>
+
+            </div>
+          </div>
+        </div>
+        
+       
+      </div>
+      <div id='msg'>{{msg}}</div>
+      <div id='event'>{{events | json}}</div>
+</body>
+</html>

@@ -3,18 +3,18 @@
 
 
 body{
-    background-color:white;
+    background-color:orange;
     
     text-align: center;
 }
-div{
+/* div{
     display: inline-block;
     border:2px solid black;
     height: auto;
     width:600px;
 
 }
-
+ */
  h1{
     text-align: center;
     border: 2px dotted black;
