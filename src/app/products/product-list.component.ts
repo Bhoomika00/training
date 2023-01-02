@@ -18,6 +18,8 @@ export class ProductListComponent implements OnInit,OnDestroy{
   imageWidth:number=100;
   showImg:boolean=false;
   filterList:Iproduct[]=[];
+  href:string='';
+  prod!:Iproduct;
   products:Iproduct[]=[];
   title:string=''; //this title is only for testing 
   errorMessage:string='';
@@ -25,18 +27,26 @@ export class ProductListComponent implements OnInit,OnDestroy{
   
   
   ngOnInit():void{
-    this.sub=this.productService.getproducts().subscribe((response)=>{
-      console.log(response);
-      this.products=response;
-      this.filterList=this.products;
-    },
-    err=>{this.errorMessage=err;
-      console.log(err);
-    });
-    this.productService.selectedProductChanges$.
+    this.href=this.router.url;
+    console.log(this.href);
+    //sub object is initialized
+       this.sub =this.productService.getProducts().subscribe(
+         (response)=>{
+
+         console.log(response);
+         this.products=response;
+         this.filterList = this.products;
+
+       },
+       err=>{this.errorMessage=err;
+        console.log(err);
+       }
+       );
+
+       this.productService.selectedProductChanges$.
        subscribe(currentProduct=>{this.selectedProduct=currentProduct;
-       });
-  }
+       console.log(this.selectedProduct);
+       });  }
     
     ngOnDestroy(): void {
       this.sub.unsubscribe();
@@ -79,7 +89,7 @@ ratingHandler(msg:string):void{
 
 productAddEvent(p:Iproduct){
   this.addEvent.emit(p); //this is for parent-child one
-  this.productService.changeSelectedProduct(p);
+  //this.productService.changeSelectedProduct(p);
    
 }
 addnewproduct(){
@@ -88,9 +98,18 @@ addnewproduct(){
   this.productService.changeSelectedProduct(this.productService.newProduct());
   console.log('back to newProduct from service ');
 
-   this.router.navigate(['/addProduct']);
+   this.router.navigate([this.href,'addProduct']);
     //console.log(this.productService.newProduct());
 }
+
+productSelected(product:Iproduct):void{
+  this.productService.changeSelectedProduct(product);
+  //console.log(this.productService.changeSelectedProduct(product));
+ }
+  getProductById(id:number):Iproduct{
+    this.productService.getProductById(id).subscribe(resp=>this.prod=resp);
+    return this.prod;
+  }
 
 }  
 

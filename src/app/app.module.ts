@@ -31,6 +31,9 @@ import { ProductListComponent } from './products/product-list.component';
 import { ProductaddComponent } from './products/productadd/productadd.component';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { TrusteeComponent } from './forms/trustee/trustee.component';
+import { MenuComponent } from './home/menu.component';
+import { LoginComponent } from './user/login.component';
+import { ShellComponent } from './home/shell.component';
 
 
 @NgModule({
@@ -54,7 +57,10 @@ import { TrusteeComponent } from './forms/trustee/trustee.component';
     BookComponent,
     HomeComponent,
     AboutComponent,
-    AnimalDetailComponent
+    AnimalDetailComponent,
+    MenuComponent,
+    LoginComponent,
+    ShellComponent
     //StudentComponent
   ],
   imports: [

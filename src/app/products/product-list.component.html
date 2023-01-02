@@ -42,7 +42,7 @@
                     <td>
                         {{p.id}}
                     </td>
-                    <td>{{p.name|uppercase}}</td>
+                    <td (click)="productSelected(p)">{{p.name|uppercase}}</td>
 
                     <td>{{p.category}}</td>
                     <td>{{p.price|currency:'INR'}}</td>
@@ -64,6 +64,9 @@
         </table>
         <button class="btn btn-primary" (click)='addnewproduct()' >ADD NEW PRODUCT</button>
     </div>
+
+    
+<router-outlet></router-outlet>
 
 
 
