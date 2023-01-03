@@ -15,7 +15,7 @@
   <h1>Filtered as per age {{numage}}</h1> -->
 
     <div class="table-responsive">
-        <table class="table table-light table-striped table-responsive"
+        <table class="table table-dark table-striped table-responsive "
         *ngIf="animalList.length">
 
             <thead>
@@ -23,21 +23,22 @@
                     <th scope="col">#</th>
                     <th scope="col">ID</th>
                     <th scope="col">Name</th>
-               
-           
-                     <th scope="col">Brief Desc</th>
+                    <th scope="col">Brief Desc</th>
                     <th scope="col">Age</th>
                     <th scope="col">
                         <button
                 class="btn btn-primary"
                 (click)="imageVisibility()">{{showImg ? 'Hide' : 'Show'}} Image</button>
                     </th>
+                    <th scope='col'></th>
+                    <th scope='col'></th>
+                    
                 </tr>
                      </thead>
  
                 
             <tbody>
-                <tr *ngFor="let animal of filterList;let i = index">
+                <tr *ngFor="let animal of filterList;let i = index" >
                     <td>{{i+1}}</td>
                     <td>
                         {{animal.id}}
@@ -50,7 +51,11 @@
                     <td><img  *ngIf="showImg"
                          src={{animal.imageUrl}} [style.margin.px]='imageMargin' 
                         [style.width.px]='imageWidth'/></td>
-                        <td><i class="fa fa-trash" aria-hidden="true"></i></td>
+                        <td>
+                            <a [routerLink]="['addanimal']" (click)="animalSelected(animal)"><i class="fa fa-edit" style="font-size:24px"></i></a>
+                        </td>
+                        <td><i class="fa fa-trash" style="font-size:24px" aria-hidden="true" (click)='deleteEntry(animal)'></i></td>
+                        
                 </tr>
             </tbody>
         </table>
@@ -61,10 +66,12 @@
     </div>
 
     <div>
-        <button id='add' value='Add Entry' class="btn btn-primary">
+        <button id='add' value='Add Entry' class="btn btn-warning" [routerLink]="['addanimal']" (click)="newAnimalEntry()">
             Add Entry
             </button>
     </div>
+
+<router-outlet></router-outlet>
 
 </body>
 

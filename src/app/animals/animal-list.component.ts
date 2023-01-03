@@ -74,13 +74,20 @@ export class AnimalListComponent implements OnInit {
       
       }
 
+      newAnimalEntry():void{
+        console.log('in new animal entry');
+      
+        this.service.changeSelectedAnimal(this.service.newAnimal());
+            }
+    
+
       addanimal(){
         console.log('in new animal entry');
       
         this.service.changeSelectedAnimal(this.service.newAnimal());
         console.log('back to newAnimal from service ');
       
-         this.router.navigate([this.href,'addAnimal']);
+         this.router.navigate([this.href,'addanimal']);
           //console.log(this.productService.newProduct());
       }
       
@@ -92,6 +99,24 @@ export class AnimalListComponent implements OnInit {
           this.service.getAnimalById(id).subscribe(resp=>this.prod=resp);
           return this.prod;
         }*/
+
+        deleteEntry(a:Ianimal):void{
+          if(a && a.id){
+      
+            if(confirm(`Are you sure you want to delete ${a.name} details`)){
+      
+              this.service.deleteAnimal(a.id).subscribe(
+                resp=>this.service.changeSelectedAnimal(null),
+                err=>this.errorMessage=err
+              );
+            }
+            else{
+              //no need to delete the product
+              this.service.changeSelectedAnimal(null)
+            }
+          }
+      
+        }
       
 
   

@@ -1,7 +1,11 @@
 body{
     background-color: cadetblue;
     margin: 30px;
+    
 
+}
+table,th,td,tr{
+    text-align: center;
 }
  
 img{
