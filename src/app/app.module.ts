@@ -34,6 +34,7 @@ import { TrusteeComponent } from './forms/trustee/trustee.component';
 import { MenuComponent } from './home/menu.component';
 import { LoginComponent } from './user/login.component';
 import { ShellComponent } from './home/shell.component';
+import { AnimalAddComponent } from './animals/animal-add.component';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { ShellComponent } from './home/shell.component';
     //AnimalDetailComponent,
     MenuComponent,
     LoginComponent,
-    ShellComponent
+    ShellComponent,
+    AnimalAddComponent
     //StudentComponent
   ],
   imports: [

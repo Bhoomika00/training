@@ -21,7 +21,7 @@
 
 <p>
     <label for="password">password</label>
-    <input type="text" name="password" id="password"
+    <input type="password" name="password" id="password"
     #password="ngModel"
     ngModel
     class="form-control"
@@ -30,9 +30,9 @@
 
 
     </p>
-    <a class="btn btn-light" (click)="cancel()">Cancel Navigation</a>
+    <a class="btn btn-light" (click)="cancel()">Cancel</a>
 
-    <button [disabled]="!loginForm.valid">Log In</button>
+    <button id='logIn'[disabled]="!loginForm.valid">Log In</button>
 </div>
 
 </form>

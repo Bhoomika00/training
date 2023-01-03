@@ -140,9 +140,7 @@ export class ProductaddComponent implements OnInit {
 
     if(this.addProduct.valid){
       if(this.addProduct.dirty){
-        //copy over all of the orginal product properties
-        //we arecopying data from teh addform
-        //{...} it ensures that values are not lost ids are retained
+        
         const product={...originalProduct,...this.addProduct.value};
 
       if(product.id===0){
