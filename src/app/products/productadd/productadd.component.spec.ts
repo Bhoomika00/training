@@ -20,6 +20,19 @@ describe('ProductaddComponent', () => {
     fixture = TestBed.createComponent(ProductaddComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+
+    component.product={
+      id:801,
+      name:'abc',
+      category:'abc',
+      price:1000,
+      rating:3,
+      imageurl:'/assests/images/p.jpg',
+      qty:3
+
+
+    }
+    fixture.detectChanges();
   });
 
   it('should create', () => {
@@ -27,8 +40,85 @@ describe('ProductaddComponent', () => {
   });
 
   it('should check Input attributes of name',()=>{
-    const ip=fixture.debugElement.query(By.css('.pname'));
+    
+    const ip=fixture.debugElement.query(By.css('#name'));
     expect(ip).toBeTruthy();
 
+    expect(ip.nativeElement.getAttribute('type')).toEqual('text');
+    expect(ip.nativeElement.getAttribute('name')).toEqual('name');
+    expect(ip.nativeElement.getAttribute('placeholder')).toEqual('Product name');
+    
+  });
+
+  it('should check Input attributes of price',()=>{
+    
+    const ip=fixture.debugElement.query(By.css('#price'));
+    expect(ip).toBeTruthy();
+
+    expect(ip.nativeElement.getAttribute('type')).toEqual('number');
+    expect(ip.nativeElement.getAttribute('name')).toEqual('price');
+    expect(ip.nativeElement.getAttribute('placeholder')).toEqual('price');
+    
+  });
+
+  it('should check Input attributes of category',()=>{
+    
+    const ip=fixture.debugElement.query(By.css('#category'));
+    expect(ip).toBeTruthy();
+
+    expect(ip.nativeElement.getAttribute('type')).toEqual('text');
+    expect(ip.nativeElement.getAttribute('name')).toEqual('category');
+    expect(ip.nativeElement.getAttribute('placeholder')).toEqual('Product category');
+    
+  });
+
+  it('should check Input attributes of image',()=>{
+    
+    const ip=fixture.debugElement.query(By.css('#image'));
+    expect(ip).toBeTruthy();
+
+    expect(ip.nativeElement.getAttribute('type')).toEqual('text');
+    expect(ip.nativeElement.getAttribute('name')).toEqual('image');
+    expect(ip.nativeElement.getAttribute('placeholder')).toEqual('Product image');
+    
+  });
+
+  it('should check Input attributes of rating',()=>{
+    
+    const ip=fixture.debugElement.query(By.css('#rating'));
+    expect(ip).toBeTruthy();
+
+    expect(ip.nativeElement.getAttribute('type')).toEqual('number');
+    expect(ip.nativeElement.getAttribute('name')).toEqual('rating');
+    expect(ip.nativeElement.getAttribute('placeholder')).toEqual('Product rating');
+    
+  });
+
+  
+  it('should check Input attributes of quantity',()=>{
+    
+    const ip=fixture.debugElement.query(By.css('#qty'));
+    expect(ip).toBeTruthy();
+
+    expect(ip.nativeElement.getAttribute('type')).toEqual('number');
+    expect(ip.nativeElement.getAttribute('name')).toEqual('qty');
+    expect(ip.nativeElement.getAttribute('placeholder')).toEqual('Product quantity');
+    
+  });
+
+  it('should check whether the form is valid',()=>{
+    component.addProduct.setValue({
+      id:801,
+      name:'abc',
+      category:'abc',
+      price:1000,
+      rating:3,
+      image:'/assests/images/p.jpg',
+      qty:3
+
+    });
+    fixture.detectChanges();
+    //expect(btn.nativeElement.disabled).toBeFalsy();
+    expect(component.addProduct.valid).toEqual(true);
   });
   });
