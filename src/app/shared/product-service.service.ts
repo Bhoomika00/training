@@ -14,7 +14,7 @@ export class ProductService {
     //P roductService --constructor -- it says ProductService has  a dependency of type HttpClient
 
     ///api/products --will be resolved from in-memory web api -- /api/products
- private url="api/products";
+  url="api/products";
  products:Iproduct[]=[];
 
  //why are we using BehaviorSubject

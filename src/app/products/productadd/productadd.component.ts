@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { GenericValidator } from 'shared/genericvalidator';
-import { ProductService } from 'shared/product-service.service';
+import { GenericValidator } from 'src/app/shared/genericvalidator';
+import { ProductService } from 'src/app/shared/product-service.service';
 import { Iproduct } from '../product';
 
 @Component({

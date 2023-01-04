@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { EventService } from 'shared/event.service';
+import { EventService } from 'src/app/shared/event.service';
 import { Ievent } from './event';
 
 @Component({

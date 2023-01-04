@@ -4,12 +4,13 @@
     <div class="card-body">
     <form [formGroup]="addProduct"
      (ngSubmit)="saveProduct(product)">
+
       <div class="form-group">
         <label for="name">Product Name:</label>
         <input type="text" formControlName="name"
         placeholder="Product name"
         (blur)="blur()"
-        name="name" class="form-control" id="name">
+        name="name" class="form-control pname" id="name">
       </div>
 
       <div class="form-group">

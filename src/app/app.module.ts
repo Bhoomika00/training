@@ -15,7 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './navbar/navbar.component';
 import { EventListComponent } from './events/event-list/event-list.component';
 import { EventDetailComponent } from './events/event-detail/event-detail.component';
-import { InmemoryeventService } from 'shared/inmemoryevent.service';
+import { InmemoryeventService } from 'src/app/shared/inmemoryevent.service';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -35,6 +35,8 @@ import { MenuComponent } from './home/menu.component';
 import { LoginComponent } from './user/login.component';
 import { ShellComponent } from './home/shell.component';
 import { AnimalAddComponent } from './animals/animal-add.component';
+import { CardListComponent } from './cards/card-list.component';
+import { CardComponent } from './cards/card.component';
 
 
 @NgModule({
@@ -62,7 +64,9 @@ import { AnimalAddComponent } from './animals/animal-add.component';
     MenuComponent,
     LoginComponent,
     ShellComponent,
-    AnimalAddComponent
+    AnimalAddComponent,
+    CardListComponent,
+    CardComponent
     //StudentComponent
   ],
   imports: [

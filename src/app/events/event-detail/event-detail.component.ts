@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { EventService } from 'shared/event.service';
+import { EventService } from 'src/app/shared/event.service';
 import { Ievent, Isession } from '../event-list/event';
 
 @Component({

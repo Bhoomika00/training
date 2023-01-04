@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { LoggingService } from 'shared/logging.service';
-import { ProductService } from 'shared/product-service.service';
+import { LoggingService } from 'src/app/shared/logging.service';
+import { ProductService } from 'src/app/shared/product-service.service';
 import { ProductListComponent } from '../products/product-list.component';
 import { RepeatDataPipe } from '../repeat-data.pipe';
 
