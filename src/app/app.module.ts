@@ -37,6 +37,9 @@ import { ShellComponent } from './home/shell.component';
 import { AnimalAddComponent } from './animals/animal-add.component';
 import { CardListComponent } from './cards/card-list.component';
 import { CardComponent } from './cards/card.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects } from './app.effects';
 
 
 @NgModule({
@@ -72,7 +75,9 @@ import { CardComponent } from './cards/card.component';
   imports: [
     BrowserModule, FormsModule,   HttpClientModule, ReactiveFormsModule,
     HttpClientInMemoryWebApiModule.forRoot(InmemoryeventService),
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([AppEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

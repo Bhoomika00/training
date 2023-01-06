@@ -36,6 +36,7 @@ export class CardComponent {
     console.log("CardComponent ->constructor "+this.footerContentData)
     
   }
+  /* 
 
   ngOnChanges() {
     //first time returns undfined
@@ -87,5 +88,5 @@ export class CardComponent {
 
 
 
-
+ */
 }

@@ -15,8 +15,8 @@
   <br>
     <h3>{{title}}</h3>
     <div class="table-responsive">
-        <table class="table table-light table-striped table-responsive"
-        *ngIf="products.length">
+        <table class="table table-light table-striped table-responsive">
+        <!--*ngIf="products.length"-->
 
             <thead>
                 <tr>
@@ -37,7 +37,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let p of filterList;let i = index">
+                <tr *ngFor="let p of pobservables$ | async;let i = index">
                     <td>{{i+1}}</td>
                     <td>
                         {{p.id}}

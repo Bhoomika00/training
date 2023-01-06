@@ -1,0 +1,23 @@
+<div class="card">
+
+
+    <div class="card-header">To Do List</div>
+    <form #todoForm="ngForm" (ngSubmit)="onSubmit(todoForm)">
+    <input type="text" name="todo" id="todo"  #todo="ngModel" ngModel>
+    <br>
+    <br>
+  
+    <input type="submit" value="Add ToDo">
+  </form>
+  <br>
+  <p>Todo List:</p>
+  <ul>
+     <div *ngFor="let todo of allTodos$ | async">
+  
+  <li (click)="removeTodo(todo)" >{{todo.content }} <div style='float :right; margin-right:20px;'><i class='fa fa-trash'></i></div>
+    </li>
+  
+  </div> 
+  
+</ul>
+  </div>

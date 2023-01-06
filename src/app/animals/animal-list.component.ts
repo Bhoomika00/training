@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { AnimalService, Ianimal } from './animal';
+import { AnimalService, Ianimal } from './animal.service';
 
 @Component({
   selector: 'app-animal-list',

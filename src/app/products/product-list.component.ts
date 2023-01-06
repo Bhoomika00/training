@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { ProductService } from '../shared/product-service.service';
 import { Iproduct } from './product';
 
@@ -24,13 +24,16 @@ export class ProductListComponent implements OnInit,OnDestroy{
   title:string=''; //this title is only for testing 
   errorMessage:string='';
   sub!:Subscription;
+
+  pobservables$!:Observable<Iproduct[]>
   
   
   ngOnInit():void{
     this.href=this.router.url;
     console.log(this.href);
+    this.pobservables$=this.productService.getProducts();
     //sub object is initialized
-       this.sub =this.productService.getProducts().subscribe(
+       /* this.sub =this.productService.getProducts().subscribe(
          (response)=>{
 
          console.log(response);
@@ -42,7 +45,7 @@ export class ProductListComponent implements OnInit,OnDestroy{
         console.log(err);
        }
        );
-
+ */
        this.productService.selectedProductChanges$.
        subscribe(currentProduct=>{this.selectedProduct=currentProduct;
        console.log(this.selectedProduct);

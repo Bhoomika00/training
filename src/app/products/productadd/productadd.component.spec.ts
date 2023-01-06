@@ -29,8 +29,6 @@ describe('ProductaddComponent', () => {
       rating:3,
       imageurl:'/assests/images/p.jpg',
       qty:3
-
-
     }
     fixture.detectChanges();
   });
@@ -118,7 +116,7 @@ describe('ProductaddComponent', () => {
 
     });
     fixture.detectChanges();
-    //expect(btn.nativeElement.disabled).toBeFalsy();
+    //expect(btn.nativeElement.disable).toBeFalsy();
     expect(component.addProduct.valid).toEqual(true);
   });
   });

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from "angular-in-memory-web-api";
-import { Ianimal } from 'src/app/animals/animal';
+import { Ianimal } from 'src/app/animals/animal.service';
 import { Ievent } from 'src/app/events/event-list/event';
 import { Iproduct } from 'src/app/products/product';
+import { ITodo } from '../todo/todo-interface';
 
 @Injectable({
   providedIn: 'root'
@@ -155,12 +156,17 @@ export class InmemoryeventService implements InMemoryDbService{
             "imageUrl": "../../assets/images/t.jpg"
 
     }
-]
+];
+
+const todos: ITodo[]=[
+  {id:'111',content:'Gardening'},
+  {id:'222',content:'Reading'}
+];
 
     
 
 
-    return {events,products,animals}
+    return {events,products,animals,todos}
     
   }
 }

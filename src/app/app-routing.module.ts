@@ -15,6 +15,7 @@ import { HomeComponent } from './home/home.component';
 import { ShellComponent } from './home/shell.component';
 import { ProductListComponent } from './products/product-list.component';
 import { ProductaddComponent } from './products/productadd/productadd.component';
+import { TodoPageComponent } from './todo/todo-page.component';
 import { AuthGuard } from './user/auth-guard.service';
 import { LoginComponent } from './user/login.component';
 import { WelcomeComponent } from './welcome/welcome.component'; 
@@ -55,6 +56,9 @@ import { WelcomeComponent } from './welcome/welcome.component';
     children:[{path:'addProduct',component:ProductaddComponent}]
   },
   {path:'',redirectTo:'welcome',pathMatch:'full'},
+  {path:'todo',
+  loadChildren:()=>import('./todo/todo.module').then((m)=>m.TodoModule),
+},
   {path:'login',component:LoginComponent}
   
   ]}

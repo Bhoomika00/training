@@ -1,0 +1,3 @@
+#ngrxs:
+steps for to move to ngrxs:
+1.modularise the app routing madule by giving lazy loading.

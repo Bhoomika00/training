@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 
 @Component({
   selector: 'card-list',
@@ -28,6 +30,39 @@ import { Component } from '@angular/core';
 
   `,
 })
-export class CardListComponent {
+export class CardListComponent implements OnInit {
+  constructor(private http:HttpClient){}
+  ngOnInit(): void {
+    const obs1=new Observable((data)=>data.next(Math.random()));
+    console.log('plain observables:')
+    obs1.subscribe((d)=>console.log(d));
+    obs1.subscribe((d)=>console.log(d));
+
+    //subject is multicast.same data for multiple subsribers
+    // subjects can observe the same data
+    const subj=new Subject();
+    console.log('subject :')
+    subj.subscribe((d)=>console.log(d));
+    subj.subscribe((d)=>console.log(d));
+
+    subj.next(Math.random());
+
+   /*  //http get request using observables
+    const data=this.http.get('api/products');
+    data.subscribe((d)=>console.log(d));
+    data.subscribe((d)=>console.log(d));
+
+     */
+
+    const sub1=new Subject();
+    const data=this.http.get('api/products');
+    sub1.subscribe((d)=>console.log(d));
+    sub1.subscribe((d)=>console.log(d));
+    const result=data.subscribe(sub1);
+
+
+  }
+
+
 
 }
