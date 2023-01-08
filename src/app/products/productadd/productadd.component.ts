@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { Observable, Subscription, tap } from 'rxjs';
 import { GenericValidator } from 'src/app/shared/genericvalidator';
 import { ProductService } from 'src/app/shared/product-service.service';
+import { getCurrentProduct } from 'src/app/state/products/product.selector';
+import { State } from 'src/app/state/products/product.state';
 import { Iproduct } from '../product';
+import * as ProductActions from '../../state/products/product.action'
 
 @Component({
   selector: 'app-productadd',
@@ -16,14 +20,17 @@ export class ProductaddComponent implements OnInit {
   errorMessage='';
 
   addProduct!: FormGroup;
-  product!:Iproduct | null;
+  product!:Iproduct | null | undefined;
   sub!:Subscription;
+
+  product$!: Observable<Iproduct | null | undefined  >; //this is for ngrx
+
   displayMessage: {[key:string]:string}={};
     private validationMessages!:{[key:string]:{[key:string]:string}};
 
     private genericValidator!:GenericValidator;
 
-    constructor(private formBuilder: FormBuilder,private router: Router, private productService:ProductService ) {
+    constructor(private store:Store<State>,private formBuilder: FormBuilder,private router: Router, private productService:ProductService ) {
 
       this.validationMessages={
 
@@ -49,7 +56,7 @@ export class ProductaddComponent implements OnInit {
 
    }
   ngOnDestroy(): void {
-    this.sub.unsubscribe();
+    //this.sub.unsubscribe();
   }
 
 
@@ -65,10 +72,23 @@ export class ProductaddComponent implements OnInit {
       qty:[0,[Validators.required]]
 
     });
-
+/* //this si using service---
     //when the product is selected from the product list , it should be displayed on the form
-
     this.sub=this.productService.selectedProductChanges$.subscribe(selProd=>this.displayProduct(selProd));
+ */this.product$ = this.store.select(getCurrentProduct)
+ .pipe(
+  tap(currentProduct => this.displayProduct(currentProduct))
+);
+this.product$.subscribe(resp=>this.product=resp);
+console.log('selected current product in ng onit add product ',this.product);
+
+// Watch for value changes for validation
+this.addProduct.valueChanges.subscribe(
+() => this.displayMessage =
+this.genericValidator.processMessages(this.addProduct)
+);
+console.log('value in form changes')
+
 
 
     this.addProduct.valueChanges.
@@ -103,7 +123,7 @@ export class ProductaddComponent implements OnInit {
   }
  */
 //method which renders the selected product on the form
-  displayProduct(productParam:Iproduct |null):void{
+  displayProduct(productParam:Iproduct |null | undefined):void{
 
    this.product = productParam;
    if(this.product){
@@ -142,19 +162,24 @@ export class ProductaddComponent implements OnInit {
       if(this.addProduct.dirty){
         
         const product={...originalProduct,...this.addProduct.value};
-
+        
       if(product.id===0){
-        this.productService.createProduct(product).subscribe(
+        this.store.dispatch(ProductActions.createProduct({product})); //using ngrx
+        //this is through service
+        /*this.productService.createProduct(product).subscribe(
           (resp)=>this.productService.changeSelectedProduct(resp),
           (err)=>this.errorMessage=err
-        );
+        );*/
 
      }
      else{
-
+      //this is using service
+      /*
       this.productService.updateProduct(product).subscribe(
        resp=>this.productService.changeSelectedProduct(resp),
-       err=>this.errorMessage=err      );
+       err=>this.errorMessage=err      );*/
+
+       this.store.dispatch(ProductActions.updateProduct({ product }));  //using ngrx
 
      }
       }
@@ -174,14 +199,19 @@ export class ProductaddComponent implements OnInit {
 
       if(confirm(`Are you sure you want to delete ${prod.name} details`)){
 
-        this.productService.deleteProduct(prod.id).subscribe(
+        //using service
+        /* this.productService.deleteProduct(prod.id).subscribe(
           resp=>this.productService.changeSelectedProduct(null),
           err=>this.errorMessage=err
-        );
+        ); */
+        this.store.dispatch(ProductActions.deleteProduct({ productId: prod.id }));  //using ngrx
       }
       else{
         //no need to delete the product
-        this.productService.changeSelectedProduct(null)
+        //using service
+        //this.productService.changeSelectedProduct(null)
+
+        this.store.dispatch(ProductActions.clearCurrentProduct()); //using ngrx
       }
     }
 

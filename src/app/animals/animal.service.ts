@@ -94,7 +94,7 @@ export class AnimalService {
                            tap(data=>{
                    
                             console.log('in create new Animal'+ JSON.stringify(data));
-                            this.animals.push(data);
+                            //this.animals.push(data);
                         },
                         catchError(this.errorHandler)
                         )
@@ -113,9 +113,9 @@ export class AnimalService {
                             console.log('deleted prd'+id);
                            const foundIndex = this.animals.findIndex(item=>item.id===id);
                            
-                           if(foundIndex > -1)
+                           /* if(foundIndex > -1)
                            this.animals.splice(foundIndex,1);
-                    
+                     */
                     
                           },
                           catchError(this.errorHandler))
@@ -151,9 +151,9 @@ export class AnimalService {
                             
                                 tap(()=>{console.log('update product'+animal.id);
                                 const foundIndex =this.animals.findIndex(item=>item.id === animal.id);
-                                if(foundIndex > -1){
-                                  this.animals[foundIndex]=animal;
-                                    }
+                                /* if(foundIndex > -1){
+                                  this.animals[foundIndex]=animal; 
+                                    }*/
                                 }),
                                 map(()=>animal),
                                 catchError(this.errorHandler)

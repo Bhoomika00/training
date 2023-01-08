@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 //import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
+import { AnimalListComponent } from './animals/animal-list.component';
 /*
  import { AboutComponent } from './about/about.component';
 import { AnimalAddComponent } from './animals/animal-add.component';
@@ -49,15 +50,28 @@ import { WelcomeComponent } from './welcome/welcome.component';
     {path:'',component:ShellComponent,
     children:[{path:'welcome',component:WelcomeComponent},
   
-  {
+  /*{
     path:'products',
     component:ProductListComponent,
     canActivate:[AuthGuard],
     children:[{path:'addProduct',component:ProductaddComponent}]
-  },
+  },*/
   {path:'',redirectTo:'welcome',pathMatch:'full'},
   {path:'todo',
   loadChildren:()=>import('./todo/todo.module').then((m)=>m.TodoModule),
+},
+{
+  path:'products',
+  component:ProductListComponent,
+  canActivate:[AuthGuard],
+  loadChildren:()=>import('./products/product.module').then((m)=>m.ProductModule),
+
+},
+
+{
+  path:'animals',
+  component:AnimalListComponent,
+  loadChildren:()=>import('./animals/animal.module').then((m)=>m.AnimalModule),
 },
   {path:'login',component:LoginComponent}
   

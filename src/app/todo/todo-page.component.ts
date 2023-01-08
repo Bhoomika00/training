@@ -21,6 +21,9 @@ export class TodoPageComponent implements OnInit {
   ngOnInit(): void {
     console.log('in init')
     this.store.dispatch(loadTodos());
+    //const state=this.store.getState();
+    //console.log(state);
+    //console.log(this.store.getState())
 
   }
   onSubmit(todoForm:NgForm) {

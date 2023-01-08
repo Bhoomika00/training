@@ -37,7 +37,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let p of pobservables$ | async;let i = index">
+                <tr *ngFor="let p of filterList;let i = index">
                     <td>{{i+1}}</td>
                     <td>
                         {{p.id}}
@@ -64,6 +64,8 @@
         </table>
         <button class="btn btn-primary" (click)='addnewproduct()' >ADD NEW PRODUCT</button>
     </div>
+
+    
 
     
 <router-outlet></router-outlet>
