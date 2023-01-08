@@ -4,7 +4,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AnimalAddComponent } from './animal-add.component';
 import { AnimalListComponent } from './animal-list.component';
 import { AnimalRoutingModule } from './animal-routing.module';
-//import { Store, StoreModule } from '@ngrx/store';
+import { animalReducer } from '../state/animals/animal.reducer';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { AnimalEffects } from '../state/animals/animal.effects';
+
 
 
 
@@ -14,8 +18,9 @@ import { AnimalRoutingModule } from './animal-routing.module';
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule,AnimalRoutingModule
-    //StoreModule.forFeature()
+    ReactiveFormsModule,AnimalRoutingModule,
+    StoreModule.forFeature('animals',animalReducer),
+    EffectsModule.forFeature(AnimalEffects)
     
   ]
 })

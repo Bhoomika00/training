@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AnimalService, Ianimal } from './animal.service';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription, tap } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { State } from '../state/animals/animal.state';
+import { getCurrentAnimal } from '../state/animals/animal.selector';
+import * as AnimalActions from '../state/animals/animal.actions'
 
 @Component({
   selector: 'app-animal-add',
@@ -13,11 +17,13 @@ export class AnimalAddComponent implements OnInit{
 
   addanimal!:FormGroup;
   sub!:Subscription;
-  animal!:Ianimal | null;
+  animal!:Ianimal | null | undefined;
   pageTitle:string='Edit the entry';
   errorMessage:string='';
+
+  animal$!:Observable<Ianimal | null | undefined>;
   
-  constructor(private formbuilder:FormBuilder,private router:Router,private service:AnimalService){}
+  constructor(private store:Store<State>,private formbuilder:FormBuilder,private router:Router,private service:AnimalService){}
 
   ngOnInit(): void {
 
@@ -29,11 +35,19 @@ export class AnimalAddComponent implements OnInit{
     imageUrl: ['',Validators.required]
   });
 
-  this.sub=this.service.selectedAnimalChanges$.subscribe(selani=>this.displayAnimal(selani));
+  //this.sub=this.service.selectedAnimalChanges$.subscribe(selani=>this.displayAnimal(selani)); //suing service
+
+  this.animal$ = this.store.select(getCurrentAnimal)
+ .pipe(
+  tap(currentAnimal=>this.displayAnimal(currentAnimal))
+);
+this.animal$.subscribe(resp=>this.animal=resp);
+console.log('selected current product in ng onit add product ',this.animal);
+
 
   }
 
-  displayAnimal(animalparam:Ianimal |null):void{
+  displayAnimal(animalparam:Ianimal | null | undefined):void{
 
     this.animal = animalparam;
     if(this.animal){
@@ -72,22 +86,28 @@ export class AnimalAddComponent implements OnInit{
         const animal={...OriginalAnimal,...this.addanimal.value};
 
         if(animal.id===0){
-        this.service.createAnimal(animal).subscribe(
+          //using service
+        /* this.service.createAnimal(animal).subscribe(
           (resp)=>this.service.changeSelectedAnimal(resp),
           (err)=>this.errorMessage=err
-        );
+        ); */
+
+        this.store.dispatch(AnimalActions.createAnimal({animal})); //using ngrx
         }
         else{
-          this.service.updateAnimal(animal).subscribe(
+          //using service
+          /* this.service.updateAnimal(animal).subscribe(
             resp=>this.service.changeSelectedAnimal(resp),
             err=>this.errorMessage=err      );
+ */
+            this.store.dispatch(AnimalActions.updateAnimal({animal})); //using ngrx
 
         }
 
      }
     }
 
-    this.router.navigate(['animal'])
+    this.router.navigate(['animals'])
 
    }
 

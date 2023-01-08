@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { Observable, Subscription } from 'rxjs';
+import { State } from '../state/animals/animal.state';
 import { AnimalService, Ianimal } from './animal.service';
+import * as AnimalActions from '../state/animals/animal.actions'
+import { getAnimals, getCurrentAnimal, getError } from '../state/animals/animal.selector';
 
 @Component({
   selector: 'app-animal-list',
@@ -10,7 +14,7 @@ import { AnimalService, Ianimal } from './animal.service';
 })
 export class AnimalListComponent implements OnInit {
   animalList:Ianimal[]=[];  
-  constructor(private service:AnimalService,private router:Router){}
+  constructor(private service:AnimalService,private store:Store<State>,private router:Router){}
     
   selectedAnimal!:Ianimal | null;
   href:string='';
@@ -22,11 +26,17 @@ export class AnimalListComponent implements OnInit {
     sub!:Subscription;
     errorMessage:string=''
 
+    //***for ngrx 
+    animals$!:Observable<Ianimal[]>;
+  selectedAnimal$!:Observable<any>;
+  errorMessage$!: Observable<string>;
+
     ngOnInit():void{
       //this.filterList=this.animalList
       this.href=this.router.url;
     console.log(this.href);
-      this.sub=this.service.getAnimals().subscribe(
+      //this is using service
+      /* this.sub=this.service.getAnimals().subscribe(
         (response)=>{
           console.log('in ngonint')
           console.log(response);
@@ -44,6 +54,19 @@ export class AnimalListComponent implements OnInit {
       console.log(this.selectedAnimal);
       });
 
+      
+ */
+
+      this.animals$ = this.store.select(getAnimals);
+       this.animals$.subscribe(resp=>this.filterList=resp);
+      
+       this.errorMessage$ = this.store.select(getError);
+   
+       this.store.dispatch(AnimalActions.loadAnimals());
+   
+       
+       this.selectedAnimal$ = this.store.select(getCurrentAnimal);
+   
     }
     
 
@@ -77,42 +100,45 @@ export class AnimalListComponent implements OnInit {
       newAnimalEntry():void{
         console.log('in new animal entry');
       
-        this.service.changeSelectedAnimal(this.service.newAnimal());
+        //this.service.changeSelectedAnimal(this.service.newAnimal()); //using service
+        this.store.dispatch(AnimalActions.initializeCurrentAnimal());
+        this.router.navigate([this.href,'addAnimal']);
             }
     
 
-      addanimal(){
+      /* addanimal(){
         console.log('in new animal entry');
       
-        this.service.changeSelectedAnimal(this.service.newAnimal());
+        //this.service.changeSelectedAnimal(this.service.newAnimal()); //using service
+        
         console.log('back to newAnimal from service ');
       
-         this.router.navigate([this.href,'addanimal']);
+         
           //console.log(this.productService.newProduct());
       }
-      
+       */
       animalSelected(animal:Ianimal):void{
-        this.service.changeSelectedAnimal(animal);
+        //this.service.changeSelectedAnimal(animal);  //using service
+        this.store.dispatch(AnimalActions.setCurrentAnimal({currentAnimalId:animal.id}));
         
        }
-        /*getProductById(id:number):Ianimal{
-          this.service.getAnimalById(id).subscribe(resp=>this.prod=resp);
-          return this.prod;
-        }*/
-
+        
         deleteEntry(a:Ianimal):void{
           if(a && a.id){
       
             if(confirm(`Are you sure you want to delete ${a.name} details`)){
-      
-              this.service.deleteAnimal(a.id).subscribe(
+              //using service
+              /* this.service.deleteAnimal(a.id).subscribe(
                 resp=>this.service.changeSelectedAnimal(null),
                 err=>this.errorMessage=err
-              );
+              ); */
+              this.store.dispatch(AnimalActions.deleteAnimal({ animalId: a.id }));  //using ngrx
             }
             else{
               //no need to delete the product
-              this.service.changeSelectedAnimal(null)
+              //this.service.changeSelectedAnimal(null)  //using service
+
+              this.store.dispatch(AnimalActions.clearCurrentAnimal()); //using ngrx
             }
           }
       
