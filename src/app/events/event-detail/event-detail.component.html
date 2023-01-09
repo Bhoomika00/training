@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <!-- //card layout using bootstarp
     <div class="row row-cols-1 row-cols-md-3 g-4" >
         <div class="col h-100" *ngFor="let e of events">
           <div class="card" (click)='showEvent(e)' >
@@ -45,7 +45,46 @@
         
        
       </div>
-      <div id='msg'>{{msg}}</div>
-      <div id='event'>{{events | json}}</div>
+      --> 
+      <!-- <mat-grid-list cols="3" rowHeight="2:1"> -->
+      <mat-card class="example-card" >
+        <div *ngFor="let e of events">
+          
+          
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          
+        </mat-card-header>
+        <!--<mat-grid-tile style="width: 300px;">-->
+        
+        <img mat-card-image src="{{e.imageUrl}}" alt="Photo of event"
+        (click)="applyAnimation($event)"
+        [@enlarge]="isHovering  ? 'end' : 'start'">
+        <!--(mouseover)="applyAnimation($event)"-->
+        <mat-card-title>Event name: {{e.name}}</mat-card-title>
+          <!--<mat-card-subtitle>{{e.name}}</mat-card-subtitle>-->
+        <mat-card-content>
+          
+          <p>Date & time:{{e.date}},{{e.time}}</p>
+          <p>Location:
+            {{e.location.address}},{{e.location.city}},{{e.location.country}}</p>
+
+        </mat-card-content>
+      <!--</mat-grid-tile>-->
+          
+        
+      
+      </div>
+      
+     
+
+      </mat-card>
+     
+    <!-- </mat-grid-list> -->
+    
+    
+      
+      
+     
 </body>
 </html>

@@ -1,10 +1,36 @@
-<!--  <form [formGroup]='empForm)' (ngSubmit)='onSubmit(empform)'>
+<div id="main">
+<mat-form-field appearance="fill">
+    <!--<mat-label>Input</mat-label>-->
+    Name:<input matInput>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Select</mat-label>
+    <mat-select>
+      <mat-option value="one">Admin</mat-option>
+      <mat-option value="two">User</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
 
-    <p>
-        <label for="firstname">Firstname</label>
-        <input type="text" name="firstname" id="firstname" required form>
-    </p>
-    <p>
+    <input matInput [matDatepicker]="pickeryear"
 
-    </p>
-</form>  -->
+     placeholder="Choose a date">
+
+    <mat-datepicker-toggle  [for]="pickeryear">
+
+    </mat-datepicker-toggle>
+
+    <mat-datepicker #pickeryear startView="year"></mat-datepicker>
+
+</mat-form-field>
+
+
+  <mat-form-field appearance="fill">
+    <mat-label>Experience</mat-label>
+    <textarea matInput></textarea>
+  </mat-form-field>
+
+  <p><button id="btn">Submit</button></p>
+
+</div>
+  

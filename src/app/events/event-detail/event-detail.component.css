@@ -1,12 +1,23 @@
 .card{
     margin: 20px 20px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     text-align: center;
+    row-gap:10px ;
+    
+    border: 2px solid black;
 }
+  .example-card {
+    max-width: 300px;
+    margin-bottom: 50px;
+    float: left;
+    
+
+    
+  }  
 
 img{
-    height:300px;
+    height:200px;
     width: full-width;
 }
 table,th,tr,td{

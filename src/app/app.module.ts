@@ -38,6 +38,9 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effects';
 import {  StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { MaterialModule } from './material UI module/material-module.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 @NgModule({
@@ -70,13 +73,15 @@ import {  StoreDevtoolsModule } from '@ngrx/store-devtools';
     CardComponent
     //StudentComponent
   ],
-  imports: [
+  imports: [ MaterialModule,
     BrowserModule, FormsModule,   HttpClientModule, ReactiveFormsModule,
     HttpClientInMemoryWebApiModule.forRoot(InmemoryeventService),
     AppRoutingModule,
     StoreDevtoolsModule.instrument(),
     StoreModule.forRoot({}),
-    EffectsModule.forRoot([AppEffects])
+    EffectsModule.forRoot([AppEffects]),
+    BrowserAnimationsModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,3 +1,14 @@
 #ngrxs:
 steps for to move to ngrxs:
 1.modularise the app routing madule by giving lazy loading.
+
+if we ant to create the components other than app module use command:
+    ng g c component_name -m module_name;
+
+browserAnimationModule is to be imported in root module to enable animation.
+
+################################################################################################
+in case of any incompatability issues related versions:
+        npm install -g rimraf
+        go to app folder:rimraf node_modules
+        npm install
