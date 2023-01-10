@@ -6,6 +6,7 @@ import { EventDetailComponent } from './events/event-detail/event-detail.compone
 //import { EventDetailComponent } from './events/event-detail/event-detail.component';
 import { EventListComponent } from './events/event-list/event-list.component';
 import { EmpformComponent } from './forms/empform.component';
+import { HomeComponent } from './home/home.component';
 /*
  import { AboutComponent } from './about/about.component';
 import { AnimalAddComponent } from './animals/animal-add.component';
@@ -18,6 +19,11 @@ import { HomeComponent } from './home/home.component';
 
 
 import { ShellComponent } from './home/shell.component';
+import { HomePageComponent } from './My mart/homePage/home-page.component';
+import { MangerHomeComponent } from './My mart/manager/manager-home/manger-home.component';
+//import { ManagerHomeComponent } from './My mart/manager/manager-home/manager-home.component';
+import { NavigationComponent } from './My mart/manager/navigation/navigation.component';
+import { ToolbarComponent } from './My mart/toolbar/toolbar.component';
 import { ProductListComponent } from './products/product-list.component';
 import { ProductaddComponent } from './products/productadd/productadd.component';
 import { TodoPageComponent } from './todo/todo-page.component';
@@ -50,18 +56,13 @@ import { WelcomeComponent } from './welcome/welcome.component';
   
  
 //Shell component routes
-    const routes:Routes=[
+    /* const routes:Routes=[
     {path:'',component:ShellComponent,
     children:[{path:'welcome',component:WelcomeComponent},
   
-  /*{
-    path:'products',
-    component:ProductListComponent,
-    canActivate:[AuthGuard],
-    children:[{path:'addProduct',component:ProductaddComponent}]
-  },*/
   
-  //children:[{path:'details',component:EventDetailComponent}]},
+  
+  
   {path:'',redirectTo:'welcome',pathMatch:'full'},
   {path:'todo',
   loadChildren:()=>import('./todo/todo.module').then((m)=>m.TodoModule),
@@ -88,6 +89,36 @@ import { WelcomeComponent } from './welcome/welcome.component';
   ]}
  
   
+  ] */
+  const routes:Routes=[
+    {path:'',component:HomeComponent},
+    {path:'todo',
+  loadChildren:()=>import('./todo/todo.module').then((m)=>m.TodoModule),
+},
+{
+  path:'products',
+  component:ProductListComponent,
+  //canActivate:[AuthGuard],
+  loadChildren:()=>import('./products/product.module').then((m)=>m.ProductModule),
+
+},
+
+{
+  path:'animals',
+  component:AnimalListComponent,
+  loadChildren:()=>import('./animals/animal.module').then((m)=>m.AnimalModule),
+},
+{
+  path:'home',component:HomePageComponent
+},
+{
+  path:'manager',
+  component:MangerHomeComponent,
+  canActivate:[AuthGuard],
+  loadChildren:()=>import('../app/My mart/manager/manager.module').then((m)=>m.ManagerModule),
+},
+{path:'login',component:LoginComponent}
+    
   ]
     
 @NgModule({

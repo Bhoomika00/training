@@ -1,4 +1,4 @@
-import { state, style, trigger } from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { EventService } from 'src/app/shared/event.service';
 import { Ievent, Isession } from '../event-list/event';
@@ -15,8 +15,10 @@ import { Ievent, Isession } from '../event-list/event';
       })),
 
     state('end',style({
-      height:'400px',width:'400px'
+      height:'400px',width:'400px',border:'2px dotted red'
     })),
+
+    transition('start => end',[animate('2s')]),
   ])
 ]
 })
@@ -46,8 +48,11 @@ export class EventDetailComponent implements OnInit,OnChanges {
     console.log(e);
   }
 
-  applyAnimation($event: any){
-    this.isHovering=!this.isHovering;
+  currentState=['start','end'];
+
+  applyAnimation(index:number){
+    //this.isHovering=!this.isHovering;
+  this.currentState[index]=this.currentState[index]==='start'?'end':'start';
 
  }
 }

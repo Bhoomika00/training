@@ -1,6 +1,6 @@
 <!-- <div><p>welcome works!</p> 
 </div>-->
-<h2>{{welcomeMsg}}</h2>
+
 <!-- {{name | repeatData:5}}
 <div class="card-body">
     Input string : <input type='text' [(ngModel)]="num" />
@@ -19,3 +19,9 @@
  <!--<div><h1>{{msg}}</h1>
  <button id=btn (click)='printProduct()'>Show Products</button>
  </div>-->
+ <div [@animateText]="text" class="move">Heloo</div>
+ <h2>{{welcomeMsg}}</h2>
+
+ <!--<h3>keypress Animation demo</h3>-->
+  <button (click)="toggleBounce()">Move</button>
+  

@@ -8,6 +8,7 @@ import { animalReducer } from '../state/animals/animal.reducer';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { AnimalEffects } from '../state/animals/animal.effects';
+import { MaterialModule } from '../material UI module/material-module.module';
 
 
 
@@ -19,6 +20,7 @@ import { AnimalEffects } from '../state/animals/animal.effects';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,AnimalRoutingModule,
+    MaterialModule,
     StoreModule.forFeature('animals',animalReducer),
     EffectsModule.forFeature(AnimalEffects)
     

@@ -5,7 +5,7 @@ import { ProductListComponent } from './product-list.component';
 import { ProductaddComponent } from './productadd/productadd.component';
 import { StarComponent } from '../star/star.component';
 import { ProductRoutingModule } from './product-routing.module';
-import { Store, StoreModule } from '@ngrx/store';
+import { StoreModule } from '@ngrx/store';
 import { productReducer } from '../state/products/product.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { ProductEffects } from '../state/products/product.effects';

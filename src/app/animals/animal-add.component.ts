@@ -7,11 +7,13 @@ import { Store } from '@ngrx/store';
 import { State } from '../state/animals/animal.state';
 import { getCurrentAnimal } from '../state/animals/animal.selector';
 import * as AnimalActions from '../state/animals/animal.actions'
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-animal-add',
   templateUrl: './animal-add.component.html',
-  styleUrls: ['./animal-add.component.css']
+  styleUrls: ['./animal-add.component.css'],
+  
 })
 export class AnimalAddComponent implements OnInit{
 
@@ -111,6 +113,7 @@ console.log('selected current product in ng onit add product ',this.animal);
 
    }
 
+   
 
    
 

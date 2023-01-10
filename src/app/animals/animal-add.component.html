@@ -1,36 +1,72 @@
 <div class="card"
    *ngIf="animal">
    <div class="card-header"><h2 class="text-center">{{pageTitle}}</h2></div>
-    <div class="card-body">
+    <div class="card-body" id='main'>
     <form [formGroup]="addanimal"
      (ngSubmit)="saveAnimal(animal)">
 
       <div class="form-group">
-        <label for="name">Animal Name:</label>
+        <!-- <label for="name">Animal Name:</label>
         <input type="text" formControlName="name"
         placeholder="animal name"
-        name="name" class="form-control" id="name">
+        name="name" class="form-control" id="name"> -->
+        <label for="name">Animal Name:</label>
+        <mat-form-field appearance="fill" [style.width.px]=500>
+           <mat-label>Enter name</mat-label> 
+          <input matInput  #name type='text' formControlName='name' id='name' name='name'class="form-control" required> 
+        </mat-form-field>
+
       </div>
+      <!--
+       <div *ngIf='name'>
+      <div *ngIf="!name.valid && (name.dirty || name.touched)" class="alert alert-danger">
+        <div *ngIf="name.errors?.['required']">
+          Name is required
+     </div>
+     <div *ngIf="name.errors?.['minlength']">
+         Name minimum number of chars  required is 3
+    </div>
+  </div> 
+    
+ </div>-->
 
       <div class="form-group">
         <label for="breifdesc">Animal Description:</label>
-        <input type="text" formControlName="breifdesc"
+        <!-- <input type="text" formControlName="breifdesc"
         placeholder="animal Description"
-        name="breifdesc" class="form-control" id="breifdesc">
+        name="breifdesc" class="form-control" id="breifdesc"> -->
+        <mat-form-field appearance="fill" [style.width.px]=450>
+          <mat-label>Enter Description</mat-label>
+          <input matInput type='text'formControlName='breifdesc' id='breifdesc' name='breifdesc' required> 
+        </mat-form-field>
+        
       </div>
-
+     <!--  <div *ngIf="!breifdesc?.valid && (breifdesc?.dirty || breifdesc?.touched)" class="alert alert-danger">
+        <div *ngIf="breifdesc.errors?.['required']">
+          Descprition is required
+     </div>
+     </div>
+ -->
       <div class="form-group">
         <label for="age">Animal Age:</label>
-        <input type="number" formControlName="age"
+        <!--<input type="number" formControlName="age"
         placeholder="animal age"
-        name="age" class="form-control" id="age">
+        name="age" class="form-control" id="age">-->
+        <mat-form-field appearance="fill" [style.width.px]=500>
+          <mat-label>Enter age</mat-label>
+          <input matInput type='number'formControlName='age' id='age' name='age' required > 
+        </mat-form-field>
       </div>
 
       <div class="form-group">
-        <label for="imageUrl">Animal Age:</label>
-        <input type="text" formControlName="imageUrl"
+        <label for="imageUrl">Animal Image:</label>
+       <!-- <input type="text" formControlName="imageUrl"
         placeholder="animal image Url"
-        name="imageUrl" class="form-control" id="imageUrl">
+        name="imageUrl" class="form-control" id="imageUrl">-->
+        <mat-form-field appearance="fill" [style.width.px]=500>
+          <mat-label>Enter Url</mat-label>
+          <input matInput type='text' formControlName='imageUrl' id='imageUrl' name='imageUrl' > 
+        </mat-form-field>
       </div>
 
       
@@ -39,7 +75,7 @@
 
 
 
-      <button [disabled]='!addanimal.valid ||!addanimal.dirty' class="btn btn-success">Save Entry</button>
+      <button [disabled]='!addanimal.valid ||!addanimal.dirty' id='btn'class="btn btn-success">Save Entry</button>
     </form>
     </div>
     </div>

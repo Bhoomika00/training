@@ -1,20 +1,25 @@
-<div id="main">
+<form [formGroup]="empForm" (ngSubmit)="onSubmit()">
+<div id="main" class="form-group">
 <mat-form-field appearance="fill">
     <!--<mat-label>Input</mat-label>-->
-    Name:<input matInput>
+    Name:<input matInput formControlName='name' id='name' name='name' > 
+    <mat-hint align="end">Not more than 20 characters long.</mat-hint>
+    <!-- <mat-error *ngIf="myError('name', 'minlength')">Name should be great than 2 charcters</mat-error> -->
   </mat-form-field>
+
+  
   <mat-form-field appearance="fill">
-    <mat-label>Select</mat-label>
-    <mat-select>
-      <mat-option value="one">Admin</mat-option>
-      <mat-option value="two">User</mat-option>
-    </mat-select>
+    <mat-label>Deparment</mat-label>
+    <input matInput formControlName='dept' name='dept' id='dept' name='dept'>
+    <!-- <mat-error *ngIf="myError('dep', 'required')">Please enter Deparment</mat-error> -->
   </mat-form-field>
+
+  
   <mat-form-field>
 
-    <input matInput [matDatepicker]="pickeryear"
+    Joining Date:<input matInput [matDatepicker]="pickeryear"
 
-     placeholder="Choose a date">
+     placeholder="Choose a date" formControlName='joiningDate' id='joiningDate' name='joiningDate'>
 
     <mat-datepicker-toggle  [for]="pickeryear">
 
@@ -27,10 +32,11 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Experience</mat-label>
-    <textarea matInput></textarea>
+    <textarea matInput formControlName='experience'id='experience' name='experience'></textarea>
   </mat-form-field>
 
-  <p><button id="btn">Submit</button></p>
+  <p><button id="btn" class="btn btn-primary">Submit</button></p>
 
 </div>
+</form>
   

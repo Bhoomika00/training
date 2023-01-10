@@ -1,25 +1,26 @@
 .card{
     margin: 20px 20px;
     display: flex;
-    flex-direction: row;
+    flex-direction:column;
     text-align: center;
-    row-gap:10px ;
-    
-    border: 2px solid black;
+    align-items: center;
+   
+   
 }
-  .example-card {
+  /* .example-card {
     max-width: 300px;
     margin-bottom: 50px;
-    float: left;
+    
     
 
     
-  }  
+  }   */
 
-img{
-    height:200px;
-    width: full-width;
-}
+ img{
+    height: 300px;
+    width: 400px;
+    justify-content: center;
+} 
 table,th,tr,td{
     border: 2px solid blue;
     text-align: center;

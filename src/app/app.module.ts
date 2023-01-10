@@ -40,6 +40,9 @@ import { AppEffects } from './app.effects';
 import {  StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { MaterialModule } from './material UI module/material-module.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToolbarComponent } from './My mart/toolbar/toolbar.component';
+import { HomePageComponent } from './My mart/homePage/home-page.component';
+
 
 
 
@@ -70,7 +73,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ShellComponent,
     //AnimalAddComponent,
     CardListComponent,
-    CardComponent
+    CardComponent,
+    ToolbarComponent,
+    HomePageComponent,
+    
     //StudentComponent
   ],
   imports: [ MaterialModule,
