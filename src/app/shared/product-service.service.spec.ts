@@ -193,7 +193,7 @@ it('should check update function',()=>{
  dummyList=[...dummyList,dummyItem];
  //so the size of dummylist becomes 4.
  
- service.deleteProduct(504).subscribe(res=>{expect(res).toEqual(504);});
+ service.deleteProduct(`${dummyItem.id}`).subscribe(res=>{expect(res).toEqual(504);});
  
  expect(dummyList.length).toEqual(3);
  
@@ -201,7 +201,7 @@ it('should check update function',()=>{
 
  const req = httpMock.expectOne(`${service.url}/${dummyItem.id}`);
     expect(req.request.method).toBe('DELETE');
-    req.flush(504 );
+    req.flush(dummyList );
   
 
 
