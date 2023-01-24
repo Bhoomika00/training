@@ -43,3 +43,17 @@ features that are constantly needed are put in services.
 
 httpclientmodule: is a lazy module
 return observables.
+
+testbed:the testbed ia first buliding blocks.z
+
+they are 2 types of forms:
+1.template driven forms(html): validation are present in form itself.
+2.reactive forms:components are responsible for logic and validations
+
+
+form control:is used for each form field for inspecting the data entered.form control obj cna be used to set the values and for valiadation
+
+ngform: converts the html form to template ddriven form and creates the top level object of from group.
+
+template reference varibale are not avialable in component like form name.
+ngmodel will create a form instance with name attribute .
